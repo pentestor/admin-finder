@@ -2,6 +2,7 @@ import requests
 import sys
 import validators
 
+#check validation url
 def check_url(url): 
     check = validators.url(url)
     if check == True:
@@ -18,6 +19,7 @@ def path_list():
         fresh_list.append(i[:-1])
     return fresh_list  
 
+# check response content word
 def check_content(content):
     check_list = [
         "username",
@@ -79,7 +81,8 @@ if __name__ == "__main__":
                     r = requests.get(url=url)
                     status_code = r.status_code
                     print(f"[*] {url} : {status_code}")
-                    if (status_code == 200 or status_code == 302 or status_code == 403 or status_code == 401) and (check_content(str(r.content)) == True):
+                    #check response
+                    if (status_code == 200 or status_code == 302 or status_code == 403 or status_code == 401 or status_code == 404) and (check_content(str(r.content)) == True):
                         checked_list.append(url)
                 except requests.exceptions.ConnectionError:
                     print("[!] ERROR IN CONNECTION URL....")
