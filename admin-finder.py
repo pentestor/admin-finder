@@ -13,7 +13,7 @@ def check_url(url):
 def path_list():
     list_path = []
     fresh_list = []
-    with open("path_login.txt") as file_path:
+    with open("src/path_login.txt") as file_path:
         list_path = file_path.readlines()
     for i in list_path:
         fresh_list.append(i[:-1])
